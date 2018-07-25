@@ -1,0 +1,599 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     21019,        589]
+NotebookOptionsPosition[     18417,        539]
+NotebookOutlinePosition[     18771,        555]
+CellTagsIndexPosition[     18728,        552]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "Use ",
+ StyleBox["Directory",
+  FontWeight->"Bold"],
+ " command to find your working directory. Use the ",
+ StyleBox["SetDirectory",
+  FontWeight->"Bold"],
+ " command to change directory to your preferred folder, or put the files you \
+need in the current working directory."
+}], "Text",
+ CellChangeTimes->{{3.741470235700781*^9, 3.7414702795629272`*^9}, {
+  3.741470353371872*^9, 3.741470357764514*^9}, {3.741470447868937*^9, 
+  3.741470460444427*^9}},ExpressionUUID->"643764ed-3bf3-42a2-b443-\
+e885b94bd917"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", "\"\<~/working\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.741470219318058*^9, 3.741470223568618*^9}, {
+  3.7414703117990026`*^9, 3.741470317833414*^9}, {3.741470361535673*^9, 
+  3.741470368199305*^9}},
+ CellLabel->
+  "In[226]:=",ExpressionUUID->"3cbb31ae-a22e-47af-a2e2-53db65869ad1"],
+
+Cell[BoxData["\<\"/Users/kkliang/working\"\>"], "Output",
+ CellChangeTimes->{
+  3.741470224710208*^9, {3.741470369375082*^9, 3.741470388573*^9}},
+ CellLabel->
+  "Out[226]=",ExpressionUUID->"2ec72363-a331-4693-b236-72dccae096bd"]
+}, Open  ]],
+
+Cell["\<\
+Load the example data file (in column-separated vector format) using the \
+built-in function of WL\
+\>", "Text",
+ CellChangeTimes->{{3.741470511392507*^9, 
+  3.741470560508883*^9}},ExpressionUUID->"b2bfebfa-83af-473a-93bb-\
+2a930adbfabe"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"data001", "=", 
+  RowBox[{"Import", "[", "\"\<data001.csv\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.741470471241297*^9, 3.7414704949534483`*^9}, {
+  3.741470902638055*^9, 3.74147090410749*^9}},
+ CellLabel->
+  "In[231]:=",ExpressionUUID->"6e8bfe16-0713-4df0-b067-2028eba9a8e0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0.00134`", ",", "0.001`", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.00134`", ",", "0.00154`", ",", "7.6`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.00134`", ",", "0.00312`", ",", "15.5`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.00134`", ",", "0.00402`", ",", "20"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.003`", ",", "0.001`", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.003`", ",", "0.00154`", ",", "11"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.003`", ",", "0.00312`", ",", "23"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.003`", ",", "0.00402`", ",", "31"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.01`", ",", "0.001`", ",", "21"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.01`", ",", "0.00154`", ",", "34"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.01`", ",", "0.00312`", ",", "70"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.01`", ",", "0.00402`", ",", "96"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7414705681242247`*^9, 3.741470905923568*^9},
+ CellLabel->
+  "Out[231]=",ExpressionUUID->"f2e0c648-1761-4b15-a7d5-1a23d05d32d0"]
+}, Open  ]],
+
+Cell["Optionally, view the data.", "Text",
+ CellChangeTimes->{{3.741470766767076*^9, 
+  3.741470802915678*^9}},ExpressionUUID->"67d6cca6-8353-44c6-a03a-\
+e719e2e74c21"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{"data001", ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<[H\!\(\*SubscriptBox[\(]\), \(0\)]\) / mM\>\"", ",", " ", 
+        "\"\<[G\!\(\*SubscriptBox[\(]\), \(0\)]\) / mM\>\"", ",", " ", 
+        "\"\<\!\(\*SubscriptBox[\(v\), \(0\)]\) / (M/s)\>\""}], "}"}]}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.741470587701652*^9, 3.741470638586904*^9}, {
+  3.7414706777216187`*^9, 3.7414707450619917`*^9}, {3.7414709088596907`*^9, 
+  3.7414709101879597`*^9}},
+ CellLabel->
+  "In[232]:=",ExpressionUUID->"56e01736-d5ce-4cb1-80d1-a5ae8d4f6daf"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"[H\\!\\(\\*SubscriptBox[\\(]\\), \\(0\\)]\\) / mM\"\>",
+       HoldForm], 
+      TagBox["\<\"[G\\!\\(\\*SubscriptBox[\\(]\\), \\(0\\)]\\) / mM\"\>",
+       HoldForm], 
+      TagBox["\<\"\\!\\(\\*SubscriptBox[\\(v\\), \\(0\\)]\\) / (M/s)\"\>",
+       HoldForm]},
+     {"0.00134`", "0.001`", "5"},
+     {"0.00134`", "0.00154`", "7.6`"},
+     {"0.00134`", "0.00312`", "15.5`"},
+     {"0.00134`", "0.00402`", "20"},
+     {"0.003`", "0.001`", "7"},
+     {"0.003`", "0.00154`", "11"},
+     {"0.003`", "0.00312`", "23"},
+     {"0.003`", "0.00402`", "31"},
+     {"0.01`", "0.001`", "21"},
+     {"0.01`", "0.00154`", "34"},
+     {"0.01`", "0.00312`", "70"},
+     {"0.01`", "0.00402`", "96"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {
+     None, {"[H\!\(\*SubscriptBox[\(]\), \(0\)]\) / mM", 
+       "[G\!\(\*SubscriptBox[\(]\), \(0\)]\) / mM", 
+       "\!\(\*SubscriptBox[\(v\), \(0\)]\) / (M/s)"}}]]]], "Output",
+ CellChangeTimes->{3.741470594346426*^9, 3.74147062833111*^9, 
+  3.74147074768641*^9, 3.741470911543858*^9},
+ CellLabel->
+  "Out[232]//TableForm=",ExpressionUUID->"bc87d506-999f-4585-8d8a-\
+a22f6b20eda8"]
+}, Open  ]],
+
+Cell[TextData[{
+ "For each value of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"[", "H", "]"}], "0"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "09a2600a-f911-4df8-90a3-1c2ae0691dde"],
+ ", we wish to fit ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Log10", "[", 
+    SubscriptBox["v", "0"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "101f0c24-4f8c-4d76-873f-5a47be85372e"],
+ "] against Log10[ ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"[", "G", "]"}], "0"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "5ecfcef1-d90c-499a-adb8-d700ee0202f8"],
+ " ). Therefore, first we gather the data into three groups according the \
+first column of the data."
+}], "Text",
+ CellChangeTimes->{{3.7414709811233873`*^9, 3.741471078459511*^9}, {
+  3.7414711465911283`*^9, 
+  3.7414711565052137`*^9}},ExpressionUUID->"5f76bfd1-cbd0-4102-9d29-\
+18405eabf4f1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dgs", "=", 
+  RowBox[{"GatherBy", "[", 
+   RowBox[{"data001", ",", "First"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.741470938617241*^9, 3.741470964028216*^9}},
+ CellLabel->
+  "In[234]:=",ExpressionUUID->"6fde1ff2-def7-4b77-b5cd-30368be6525c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.00134`", ",", "0.001`", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.00134`", ",", "0.00154`", ",", "7.6`"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.00134`", ",", "0.00312`", ",", "15.5`"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.00134`", ",", "0.00402`", ",", "20"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.003`", ",", "0.001`", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.003`", ",", "0.00154`", ",", "11"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.003`", ",", "0.00312`", ",", "23"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.003`", ",", "0.00402`", ",", "31"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.01`", ",", "0.001`", ",", "21"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.01`", ",", "0.00154`", ",", "34"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.01`", ",", "0.00312`", ",", "70"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.01`", ",", "0.00402`", ",", "96"}], "}"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.741470952027543*^9, 3.741470964540381*^9}},
+ CellLabel->
+  "Out[234]=",ExpressionUUID->"ea0b7fcd-94c4-4165-bb84-44d942c65a21"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Question",
+  FontWeight->"Bold"],
+ ": how to gather according to the second column of the data, that is, [G] in \
+this example?"
+}], "Text",
+ CellChangeTimes->{{3.741471086642264*^9, 3.7414711401833363`*^9}},
+ FontColor->RGBColor[
+  0.6, 0.4, 0.2],ExpressionUUID->"bbcaa634-fa96-4f88-bc32-b9741e65d491"],
+
+Cell[TextData[{
+ "Within each group (Same ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"[", "H", "]"}], "0"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "483f10a9-b7f8-4215-acd3-6b7952e7d2af"],
+ " value), fit the Log value of the 3rd column to the Log value of the 2nd \
+column with a linear model, where the independent variable is named lg. We \
+can see that ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "G"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "0100a4fb-418f-43c1-9714-f3dd1322b2b1"],
+ " values are all around 1."
+}], "Text",
+ CellChangeTimes->{{3.741471281206777*^9, 3.741471400906047*^9}, {
+   3.7414714976610403`*^9, 3.741471707542107*^9}, 3.741471896432291*^9, {
+   3.741471941537059*^9, 
+   3.74147199188866*^9}},ExpressionUUID->"5d92d299-9058-4137-a4a0-\
+af6db12d3e47"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Log10", "[", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
+      RowBox[{"LinearModelFit", "[", 
+       RowBox[{
+        RowBox[{"Log10", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", 
+           RowBox[{";;", ",", 
+            RowBox[{"2", ";;", "3"}]}], "]"}], "]"}], "]"}], ",", "lg", ",", 
+        "lg"}], "]"}]}], "}"}], "&"}], ",", "dgs"}], "]"}]], "Input",
+ CellChangeTimes->{{3.741471408091012*^9, 3.7414714927015142`*^9}, {
+   3.7414717221494293`*^9, 3.741471727058049*^9}, {3.7414717984437523`*^9, 
+   3.741471809430018*^9}, {3.741471874749507*^9, 3.741471875239356*^9}, 
+   3.741471978060504*^9},
+ CellLabel->
+  "In[240]:=",ExpressionUUID->"93decc09-acab-454e-bcf7-2c13a3351f25"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2.8728952016351923`"}], ",", 
+     TagBox[
+      RowBox[{"FittedModel", "[", 
+       TagBox[
+        PanelBox[
+         TagBox[
+          RowBox[{"3.6924361439518014`", "\[VeryThinSpace]", "+", 
+           RowBox[{"0.9985533690479458`", " ", "lg"}]}],
+          Short[#, 2]& ],
+         FrameMargins->5],
+        Editable -> False], "]"}],
+      InterpretTemplate[
+      FittedModel[{
+        "Linear", {3.6924361439518014`, 
+         0.9985533690479458}, {{$CellContext`lg}, {1, $CellContext`lg}}, {0, 
+         0}}, {{1., 1., 1., 
+        1.}}, {{-3., Log[5]/Log[10]}, {-2.812479279163537, 
+         0.8808135922807914}, {-2.505845405981557, 
+         1.1903316981702914`}, {-2.39577394691553, Log[10]^(-1) Log[20]}}, {{
+        1., -3.}, {1., -2.812479279163537}, {1., -2.505845405981557}, {
+        1., -2.39577394691553}}, 
+        Function[Null, 
+         Internal`LocalizedBlock[{$CellContext`lg}, #], {HoldAll}]]& ],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->True]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2.5228787452803374`"}], ",", 
+     TagBox[
+      RowBox[{"FittedModel", "[", 
+       TagBox[
+        PanelBox[
+         TagBox[
+          RowBox[{"4.032576065354136`", "\[VeryThinSpace]", "+", 
+           RowBox[{"1.0631528043158813`", " ", "lg"}]}],
+          Short[#, 2]& ],
+         FrameMargins->5],
+        Editable -> False], "]"}],
+      InterpretTemplate[
+      FittedModel[{
+        "Linear", {4.032576065354136, 
+         1.0631528043158813`}, {{$CellContext`lg}, {1, $CellContext`lg}}, {0, 
+         0}}, {{1., 1., 1., 
+        1.}}, {{-3., Log[7]/Log[10]}, {-2.812479279163537, Log[10]^(-1) 
+          Log[11]}, {-2.505845405981557, Log[10]^(-1) 
+          Log[23]}, {-2.39577394691553, Log[10]^(-1) Log[31]}}, {{1., -3.}, {
+        1., -2.812479279163537}, {1., -2.505845405981557}, {
+        1., -2.39577394691553}}, 
+        Function[Null, 
+         Internal`LocalizedBlock[{$CellContext`lg}, #], {HoldAll}]]& ],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->True]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2.`"}], ",", 
+     TagBox[
+      RowBox[{"FittedModel", "[", 
+       TagBox[
+        PanelBox[
+         TagBox[
+          RowBox[{"4.555519137765286`", "\[VeryThinSpace]", "+", 
+           RowBox[{"1.077179654823794`", " ", "lg"}]}],
+          Short[#, 2]& ],
+         FrameMargins->5],
+        Editable -> False], "]"}],
+      InterpretTemplate[
+      FittedModel[{
+        "Linear", {4.555519137765286, 
+         1.077179654823794}, {{$CellContext`lg}, {1, $CellContext`lg}}, {0, 
+         0}}, {{1., 1., 1., 
+        1.}}, {{-3., Log[10]^(-1) Log[21]}, {-2.812479279163537, Log[10]^(-1) 
+          Log[34]}, {-2.505845405981557, Log[10]^(-1) 
+          Log[70]}, {-2.39577394691553, Log[10]^(-1) Log[96]}}, {{1., -3.}, {
+        1., -2.812479279163537}, {1., -2.505845405981557}, {
+        1., -2.39577394691553}}, 
+        Function[Null, 
+         Internal`LocalizedBlock[{$CellContext`lg}, #], {HoldAll}]]& ],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->True]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.741471871270266*^9, 3.741471876269279*^9}},
+ CellLabel->
+  "Out[240]=",ExpressionUUID->"58f3ee88-7542-460f-985a-66a07940e1b8"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Evaluate the fitted model at lg = 0 to get the y-intersect, that is, Log10[ \
+k ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    SubscriptBox[
+     RowBox[{"[", "H", "]"}], "0"], 
+    SubscriptBox["\[Epsilon]", "H"]], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "3e6d1761-a701-48da-81e1-5aaedcf1fe21"],
+ " ].  Also record the Log value of the corresponding ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"[", "H", "]"}], "0"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "16aef3e2-dd20-4f1c-9d06-a333bea8e1e0"],
+ " value."
+}], "Text",
+ CellChangeTimes->{{3.741471909173172*^9, 
+  3.741471927382948*^9}},ExpressionUUID->"b430d055-e19e-4de4-8e10-\
+86e9133ad8f7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Log10", "[", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"LinearModelFit", "[", 
+        RowBox[{
+         RowBox[{"Log10", "[", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", 
+            RowBox[{";;", ",", 
+             RowBox[{"2", ";;", "3"}]}], "]"}], "]"}], "]"}], ",", "lg", ",", 
+         "lg"}], "]"}], "[", "0", "]"}]}], "}"}], "&"}], ",", "dgs"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.741471408091012*^9, 3.7414714927015142`*^9}, {
+  3.7414717221494293`*^9, 3.741471727058049*^9}, {3.7414717984437523`*^9, 
+  3.741471809430018*^9}},
+ CellLabel->
+  "In[237]:=",ExpressionUUID->"2c730afb-a936-4a66-9dea-c98c033763ec"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2.8728952016351923`"}], ",", "3.6924361439518014`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2.5228787452803374`"}], ",", "4.032576065354136`"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2.`"}], ",", "4.555519137765286`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7414717286166162`*^9, 3.7414718099317703`*^9},
+ CellLabel->
+  "Out[237]=",ExpressionUUID->"2a4b1d0d-9163-490b-9978-4fa55594ff15"]
+}, Open  ]],
+
+Cell["Fit the above result with a linear model.", "Text",
+ CellChangeTimes->{{3.741471757324788*^9, 
+  3.741471779327305*^9}},ExpressionUUID->"c8f05ef9-ae0a-4f9b-8c7e-\
+ee2999bede2f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LinearModelFit", "[", 
+  RowBox[{"%", ",", "lh", ",", "lh"}], "]"}]], "Input",
+ CellChangeTimes->{{3.741471743912702*^9, 3.7414717535520687`*^9}},
+ CellLabel->
+  "In[238]:=",ExpressionUUID->"1179af1c-b502-4a6f-a22e-4e56fab77720"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"FittedModel", "[", 
+   TagBox[
+    PanelBox[
+     TagBox[
+      RowBox[{"6.533243439948399`", "\[VeryThinSpace]", "+", 
+       RowBox[{"0.9896461175407489`", " ", "lh"}]}],
+      Short[#, 2]& ],
+     FrameMargins->5],
+    Editable -> False], "]"}],
+  InterpretTemplate[
+  FittedModel[{
+    "Linear", {6.533243439948399, 
+     0.9896461175407489}, {{$CellContext`lh}, {1, $CellContext`lh}}, {0, 
+     0}}, {{1., 1., 1.}}, {{-2.8728952016351923`, 
+    3.6924361439518014`}, {-2.5228787452803374`, 4.032576065354136}, {-2., 
+    4.555519137765286}}, {{1., -2.8728952016351923`}, {
+    1., -2.5228787452803374`}, {1., -2.}}, 
+    Function[Null, 
+     Internal`LocalizedBlock[{$CellContext`lh}, #], {HoldAll}]]& ],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->True]], "Output",
+ CellChangeTimes->{{3.74147178423482*^9, 3.741471812529505*^9}},
+ CellLabel->
+  "Out[238]=",ExpressionUUID->"17e978d1-3c3b-46b6-bbf2-fcdced5dc9ee"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The y-intercept of the fitted model is Log10[k], and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "H"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "05aad001-c888-460c-b6fd-edd009492ad6"],
+ " value is pretty close to 1."
+}], "Text",
+ CellChangeTimes->{{3.741471818144992*^9, 3.741471837376258*^9}, {
+  3.741472006284721*^9, 
+  3.741472031750465*^9}},ExpressionUUID->"72b0eed6-735b-4b5d-ad5d-\
+5abcd815e328"]
+},
+WindowSize->{808, 623},
+WindowMargins->{{Automatic, 10}, {Automatic, 27}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 528, 13, 58, "Text",ExpressionUUID->"643764ed-3bf3-42a2-b443-e885b94bd917"],
+Cell[CellGroupData[{
+Cell[1111, 37, 330, 6, 30, "Input",ExpressionUUID->"3cbb31ae-a22e-47af-a2e2-53db65869ad1"],
+Cell[1444, 45, 228, 4, 34, "Output",ExpressionUUID->"2ec72363-a331-4693-b236-72dccae096bd"]
+}, Open  ]],
+Cell[1687, 52, 248, 6, 35, "Text",ExpressionUUID->"b2bfebfa-83af-473a-93bb-2a930adbfabe"],
+Cell[CellGroupData[{
+Cell[1960, 62, 305, 6, 30, "Input",ExpressionUUID->"6e8bfe16-0713-4df0-b067-2028eba9a8e0"],
+Cell[2268, 70, 1187, 29, 98, "Output",ExpressionUUID->"f2e0c648-1761-4b15-a7d5-1a23d05d32d0"]
+}, Open  ]],
+Cell[3470, 102, 168, 3, 35, "Text",ExpressionUUID->"67d6cca6-8353-44c6-a03a-e719e2e74c21"],
+Cell[CellGroupData[{
+Cell[3663, 109, 694, 16, 30, "Input",ExpressionUUID->"56e01736-d5ce-4cb1-80d1-a5ae8d4f6daf"],
+Cell[4360, 127, 1819, 48, 248, "Output",ExpressionUUID->"bc87d506-999f-4585-8d8a-a22f6b20eda8"]
+}, Open  ]],
+Cell[6194, 178, 949, 28, 58, "Text",ExpressionUUID->"5f76bfd1-cbd0-4102-9d29-18405eabf4f1"],
+Cell[CellGroupData[{
+Cell[7168, 210, 269, 6, 30, "Input",ExpressionUUID->"6fde1ff2-def7-4b77-b5cd-30368be6525c"],
+Cell[7440, 218, 1355, 36, 98, "Output",ExpressionUUID->"ea0b7fcd-94c4-4165-bb84-44d942c65a21"]
+}, Open  ]],
+Cell[8810, 257, 330, 8, 35, "Text",ExpressionUUID->"bbcaa634-fa96-4f88-bc32-b9741e65d491"],
+Cell[9143, 267, 867, 22, 58, "Text",ExpressionUUID->"5d92d299-9058-4137-a4a0-af6db12d3e47"],
+Cell[CellGroupData[{
+Cell[10035, 293, 871, 23, 30, "Input",ExpressionUUID->"93decc09-acab-454e-bcf7-2c13a3351f25"],
+Cell[10909, 318, 3402, 89, 76, "Output",ExpressionUUID->"58f3ee88-7542-460f-985a-66a07940e1b8"]
+}, Open  ]],
+Cell[14326, 410, 744, 22, 58, "Text",ExpressionUUID->"b430d055-e19e-4de4-8e10-86e9133ad8f7"],
+Cell[CellGroupData[{
+Cell[15095, 436, 840, 24, 52, "Input",ExpressionUUID->"2c730afb-a936-4a66-9dea-c98c033763ec"],
+Cell[15938, 462, 546, 17, 34, "Output",ExpressionUUID->"2a4b1d0d-9163-490b-9978-4fa55594ff15"]
+}, Open  ]],
+Cell[16499, 482, 183, 3, 35, "Text",ExpressionUUID->"c8f05ef9-ae0a-4f9b-8c7e-ee2999bede2f"],
+Cell[CellGroupData[{
+Cell[16707, 489, 253, 5, 30, "Input",ExpressionUUID->"1179af1c-b502-4a6f-a22e-4e56fab77720"],
+Cell[16963, 496, 970, 26, 44, "Output",ExpressionUUID->"17e978d1-3c3b-46b6-bbf2-fcdced5dc9ee"]
+}, Open  ]],
+Cell[17948, 525, 465, 12, 35, "Text",ExpressionUUID->"72b0eed6-735b-4b5d-ad5d-5abcd815e328"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

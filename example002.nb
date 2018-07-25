@@ -1,0 +1,233 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8280,        223]
+NotebookOptionsPosition[      7352,        199]
+NotebookOutlinePosition[      7704,        215]
+CellTagsIndexPosition[      7661,        212]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Use Block to provide a scope in which local parameters can be isolated from \
+outside. You can make proper assumptions on the local parameters so that the \
+problems can be handled more smoothly.\
+\>", "Text",
+ CellChangeTimes->{{3.7414726298182783`*^9, 
+  3.741472730658546*^9}},ExpressionUUID->"1927075b-d142-453e-ab24-\
+02d5b16c88e6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"asol", "=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"k", ",", "a0", ",", "\[Nu]A", ",", "deq", ",", 
+      RowBox[{"$Assumptions", "=", 
+       RowBox[{
+        RowBox[{"k", ">", "0"}], "&&", 
+        RowBox[{"a0", ">", "0"}], "&&", 
+        RowBox[{"\[Nu]A", ">", "0"}]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"SetAttributes", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"k", ",", "a0", ",", "\[Nu]A"}], "}"}], ",", "Constant"}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"deq", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"D", "[", 
+          RowBox[{
+           RowBox[{"a", "[", "t", "]"}], ",", "t"}], "]"}]}], "/", "\[Nu]A"}],
+        "\[Equal]", 
+       RowBox[{"k", " ", 
+        RowBox[{"a", "[", "t", "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"DSolve", "[", 
+      RowBox[{
+       RowBox[{"deq", "&&", 
+        RowBox[{
+         RowBox[{"a", "[", "0", "]"}], "\[Equal]", "a0"}]}], ",", 
+       RowBox[{"a", "[", "t", "]"}], ",", "t"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.741468788275069*^9, 3.741468790508011*^9}, {
+  3.741470185983964*^9, 3.741470186213043*^9}, {3.7414721435923977`*^9, 
+  3.741472146630047*^9}, {3.741472320640748*^9, 3.741472501203864*^9}, {
+  3.741472542259459*^9, 3.741472545740834*^9}},
+ CellLabel->
+  "In[243]:=",ExpressionUUID->"c1074587-e83a-438c-b084-3b9a7c05bb3e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"a", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"a0", " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "k"}], " ", "t", " ", "\[Nu]A"}]]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.741472472827496*^9, 3.7414725026523943`*^9}, 
+   3.741472549776613*^9},
+ CellLabel->
+  "Out[243]=",ExpressionUUID->"a3e75265-ca1b-4d76-8621-ec655c3754e6"]
+}, Open  ]],
+
+Cell["\<\
+Using another Block, one can give numerical values to parameters locally, \
+without worrying about affecting the global parameters possibly having the \
+same names.\
+\>", "Text",
+ CellChangeTimes->{{3.741472755970172*^9, 
+  3.7414728152950172`*^9}},ExpressionUUID->"f9f925eb-bb68-48b5-b3fe-\
+27258ff1e92b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k", "=", "1"}], ",", 
+     RowBox[{"a0", "=", "1"}], ",", 
+     RowBox[{"\[Nu]A", "=", "1"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"a", "[", "t", "]"}], "/.", 
+      RowBox[{"asol", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "2"}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.7414725521049013`*^9, 3.741472617051033*^9}},
+ CellLabel->
+  "In[245]:=",ExpressionUUID->"71a00951-4b5f-4ed3-9cb6-dc031d85de83"],
+
+Cell[BoxData[
+ GraphicsBox[{{{}, {}, 
+    TagBox[
+     {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+      1.], LineBox[CompressedData["
+1:eJwV0f8303sAx3GkfKshxZnuiEskxSlXV6pX3dxI1DWUTmJXqHT7otxbnLpx
+r3UlZaecUr5U1hUpypeusspnJBLGVpPr63wJG7PuZqx433t/eJ7HH/C0iTjG
+jNLR0tLy/6//9Y0abq0eidroDvNRQuTQ3WJ5vIfuhaemtmPTGjnW3MrMLqMH
+QWFMe6ZUybG9SVyaQ4/Epla9xzKpHLsj1c+v0ONg6TvfZEgsR5fLH1su0ZPR
+eKLyl9kSOW4v3nk+lZ6BVYuzDV+x5EjSL3O4QL8LmUPOmbzacYTsuVMyoShH
+4pqhhNgzYzAiSaHeVi9xjC1K2LtLBvuA8eGai7XITX16yGmzFKeaPZCpbIC+
+56/HY5eOwqLctFtbuwUen5K76hgjeCLZ8rZlfRvOyR0f8kyGwY/JWbJHJoJf
+V6XgstlHqJZtMH54RAxX5lX/etch6EwXmSyx74A0L5RR7jUId8J6EljcCYHo
+Z45z7ADeJrs11zn1wL9xXF1f2A9rjnS6cLwXkfTzTXodEkjVPd3vXCUw2HlV
+T2otwd3Rqje0y/14kLpHsDWsDzTGPfnAwAD82KXzDAt6kXaoIvq23RC0tfrm
+tun2YnJT0cDBcx9RJ8s3Lq3oRtzq2nLzmmEsd2PXWbO70FNce7HVZhSS6CVH
+D/h04nOMKGt5ghQvNEyDMKu/sWKz3mx0lQxtKcucos064J1nc+CxxTi+15fH
+XJhpxylGuG1fqBxrr2bdvKzbDmdZsJHYfwJKbt2iXroYZsYT+rWaCYRbZK6M
+tn8P3ZdZJV9nK9AtULj96PsOh92qPhhs/4SEFUzHtGgRirZF3H4x+Qk9nuMu
+dhwhVFJLk6Fr/4DWz1LQBW2oCPSek+GlRG+w1ipH/f8++LBvlQ8pceQKLV4n
+uBU2Xb7tXLYKN9T5OnYPBFi3NjmDvnoSTcvSqwOnWhBq1TKtLZzECHNTh9Hz
+ZqjeXJIcT1KDt8hZpY5rQqZuWBzTbgqiwFulmh1vYdZdkadTO4WiK6cH+zwa
+MfdsUpBH7DSCWSaOPvQ30CoMK5Es1MDrr6BdleYNOHGz5NJCvgaD07axLQb1
+eL4iRd/06GdIGf6D1PzXMPU94fwb7QvMWbnuFk516FwpEMbzvoBb3fjebuMr
+PMqF3UDYDDjzxDefxdRiX4m7KWN2BmnVVQEnuTVIZN9J6rw/i20Xw5VCIR8P
+hxlZND+C9RcUHBGdj5QcNqt7B8Fr/yhOvjkfkcwx++IAAh/Ve6t4Mz6+4vEe
++e8msDy9c9h6AR+p6Xvr0iII/EzETnFafBx0v6EwjCcwXLwvZO1HCrbJi3z0
+8gniamj3HCoozH57ZoG4gGCWMRJsVErhw1h/W34RwdIF+Rx5MQXO7rJ9Wx8T
+NEREFT4toECcmCfZPILGCd+ooGwKna3puXOEBPd6vBXc3ylUnlfvF74j+MFF
+wOQkUsjwDF/ObSdwHyvbePYshe1/rir/rpvAIdG5IuQUhWenmxqSRghyUtZZ
+mh+mcG3lN+kBMoINpZON8w5SiJVkB9nICYQBfnpTkRQc/X7qqVYSXPfeb9kZ
+RkFXW3SXoybgMZWK5r0Ueis8Y1gaglcbXjD5IRR4MVwX1xmC+rGC9U+CKVy3
+NlIRQmDhl11yn0nhX2lqdHw=
+       "]]},
+     Annotation[#, "Charting`Private`Tag$60387#1"]& ]}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0.1353352887605019},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, 
+     Charting`ScaledFrameTicks[{Identity, Identity}]}, {Automatic, 
+     Charting`ScaledFrameTicks[{Identity, Identity}]}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "ScalingFunctions" -> None, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 2}, {0.1353352887605019, 0.9999999591836743}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.74147259768865*^9, 3.7414726177528563`*^9}},
+ CellLabel->
+  "Out[245]=",ExpressionUUID->"15ed31bb-1875-4770-aa8e-d3a37a6f6578"]
+}, Open  ]],
+
+Cell["Try to make the figure fancier by yourself.", "Text",
+ CellChangeTimes->{{3.741472827215208*^9, 
+  3.741472843249835*^9}},ExpressionUUID->"2c68bce1-196d-41ce-a91e-\
+4cf114e03009"]
+},
+WindowSize->{808, 623},
+WindowMargins->{{Automatic, 6}, {Automatic, 0}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 347, 7, 58, "Text",ExpressionUUID->"1927075b-d142-453e-ab24-02d5b16c88e6"],
+Cell[CellGroupData[{
+Cell[930, 31, 1501, 39, 115, "Input",ExpressionUUID->"c1074587-e83a-438c-b084-3b9a7c05bb3e"],
+Cell[2434, 72, 445, 13, 38, "Output",ExpressionUUID->"a3e75265-ca1b-4d76-8621-ec655c3754e6"]
+}, Open  ]],
+Cell[2894, 88, 316, 7, 58, "Text",ExpressionUUID->"f9f925eb-bb68-48b5-b3fe-27258ff1e92b"],
+Cell[CellGroupData[{
+Cell[3235, 99, 666, 19, 73, "Input",ExpressionUUID->"71a00951-4b5f-4ed3-9cb6-dc031d85de83"],
+Cell[3904, 120, 3244, 71, 240, "Output",ExpressionUUID->"15ed31bb-1875-4770-aa8e-d3a37a6f6578"]
+}, Open  ]],
+Cell[7163, 194, 185, 3, 35, "Text",ExpressionUUID->"2c68bce1-196d-41ce-a91e-4cf114e03009"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
