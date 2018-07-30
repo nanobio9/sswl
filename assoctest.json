@@ -1,0 +1,22 @@
+{
+	"metadata": {
+	 "kinetics": "Michaelis-Menten"
+	},
+	"species" : {
+	 "s": { "name": "S", "isEnzyme": false },
+	 "e": { "name": "E", "isEnzyme": true },
+	 "es": { "name": "ES", "isEnzyme": true },
+	 "p": { "name": "P", "isEnzyme": false }
+	},
+	"reactions": {
+		"f1": { "stoic": { "s": -1, "e": -1, "es": 1 }, "ratelaw": "k1 a[t] e[t]" },
+		"r1": { "stoic": { "s": 1, "e": 1, "es": -1 }, "ratelaw": "k2 es[t]" },
+		"f2": { "stoic": { "es": -1, "p": 1, "e": 1 }, "ratelaw": "k3 es[t]" }
+	},
+	"initial": { "s": "s0", "e": "e0", "es": 0, "p": 0 },
+	"conservation": [ "e[t]+es[t]==e0", "s[t]+es[t]+p[t]==s0" ],
+	"constants": [ "s0", "e0", "k1", "k2", "k3" ],
+	"assumptions": [ "s0 > 0", "e0 > 0", "k1 > 0", "k2 > 0", "k3 > 0" ],
+	"steady": [ "e", "es" ],
+	"relations": [ "KM=(k2+k3)/k1", "vmax = k3 e0" ]
+}
